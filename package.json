@@ -1,0 +1,12 @@
+{
+    "name": "indotech-transformers",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "cd server && npm run dev",
+        "dev:client": "cd client && npm run dev",
+        "dev:all": "start /b cmd /c \"cd server && npm run dev\" & cd client && npm run dev",
+        "install:all": "cd client && npm install && cd ../server && npm install",
+        "build": "cd client && npm run build"
+    }
+}

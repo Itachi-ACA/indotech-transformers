@@ -1,0 +1,8 @@
+node_modules/
+server/indotech.db
+server/node_modules/
+client/node_modules/
+client/dist/
+*.log
+.env
+qr-code.png
