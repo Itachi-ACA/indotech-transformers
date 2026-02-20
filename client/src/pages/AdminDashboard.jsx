@@ -44,11 +44,13 @@ const COLUMN_LABELS = {
     phase_marking: 'Phase Marking',
     reference_standard: 'Ref. Standard',
     winding_material: 'Winding Material',
-    cooling_type: 'Cooling Type',
     // Design - Rating
     mva_rating_1: 'MVA Rating 1',
     mva_rating_2: 'MVA Rating 2',
     mva_rating_3: 'MVA Rating 3',
+    cooling_type_1: 'Cooling Type 1',
+    cooling_type_2: 'Cooling Type 2',
+    cooling_type_3: 'Cooling Type 3',
     voltage_rating_wdg1: 'Voltage Wdg1',
     voltage_rating_wdg2: 'Voltage Wdg2',
     voltage_rating_wdg3: 'Voltage Wdg3',
@@ -232,8 +234,8 @@ export default function AdminDashboard() {
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
                         className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-medium transition-all whitespace-nowrap ${activeTab === tab.id
-                                ? 'tab-active'
-                                : 'border-gray-700/50 text-gray-400 hover:border-gray-600 hover:text-gray-300'
+                            ? 'tab-active'
+                            : 'border-gray-700/50 text-gray-400 hover:border-gray-600 hover:text-gray-300'
                             }`}
                         style={activeTab === tab.id ? { borderColor: tab.color, color: tab.color, boxShadow: `0 0 15px ${tab.color}33` } : {}}
                     >

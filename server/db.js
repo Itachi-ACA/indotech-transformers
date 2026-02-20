@@ -78,12 +78,14 @@ export async function initDatabase() {
       phase_marking TEXT,
       reference_standard TEXT,
       winding_material TEXT,
-      cooling_type TEXT,
 
       /* Rating Table (3 ratings) */
       mva_rating_1 TEXT,
       mva_rating_2 TEXT,
       mva_rating_3 TEXT,
+      cooling_type_1 TEXT,
+      cooling_type_2 TEXT,
+      cooling_type_3 TEXT,
       voltage_rating_wdg1 TEXT,
       voltage_rating_wdg2 TEXT,
       voltage_rating_wdg3 TEXT,
@@ -153,7 +155,7 @@ export async function initDatabase() {
   if (existing.length === 0 || existing[0].values.length === 0) {
     const hashedPassword = bcrypt.hashSync('indotech@4321', 12);
     db.run("INSERT INTO admin_users (username, password, email) VALUES (?, ?, ?)", [
-      'admin', hashedPassword, 'devaraj.K@indo-tech.com',
+      'admin', hashedPassword, 'devaraj.k@indo-tech.com',
     ]);
     console.log('✅ Default admin user created');
   }

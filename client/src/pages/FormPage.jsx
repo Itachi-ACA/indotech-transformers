@@ -79,7 +79,6 @@ const FORM_CONFIGS = {
                     { name: 'phase_marking', label: 'Phase Marking' },
                     { name: 'reference_standard', label: 'Reference Standard' },
                     { name: 'winding_material', label: 'Winding Material' },
-                    { name: 'cooling_type', label: 'Cooling Type' },
                 ],
             },
             {
@@ -88,6 +87,14 @@ const FORM_CONFIGS = {
                 headers: ['', 'Rating 1', 'Rating 2', 'Rating 3'],
                 rows: [
                     { label: 'MVA Rating', fields: ['mva_rating_1', 'mva_rating_2', 'mva_rating_3'] },
+                    { label: 'Cooling Type', fields: ['cooling_type_1', 'cooling_type_2', 'cooling_type_3'] },
+                ],
+            },
+            {
+                title: 'Voltage details',
+                layout: 'table',
+                headers: ['', 'Wdg 1', 'Wdg 2', 'Wdg 3'],
+                rows: [
                     { label: 'Voltage Rating', fields: ['voltage_rating_wdg1', 'voltage_rating_wdg2', 'voltage_rating_wdg3'] },
                 ],
             },

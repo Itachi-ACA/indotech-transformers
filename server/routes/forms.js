@@ -14,8 +14,9 @@ const FIELDS = {
     ],
     design: [
         'work_order_no', 'serial_no', 'no_of_phase', 'vector_group',
-        'frequency', 'phase_marking', 'reference_standard', 'winding_material', 'cooling_type',
+        'frequency', 'phase_marking', 'reference_standard', 'winding_material',
         'mva_rating_1', 'mva_rating_2', 'mva_rating_3',
+        'cooling_type_1', 'cooling_type_2', 'cooling_type_3',
         'voltage_rating_wdg1', 'voltage_rating_wdg2', 'voltage_rating_wdg3',
         'hr_test_oil', 'hr_test_wdg1', 'hr_test_wdg2', 'hr_test_wdg3',
         'ins_wdg1_line_li', 'ins_wdg1_line_av', 'ins_wdg1_line_iov',

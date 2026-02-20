@@ -6,12 +6,14 @@ import InternalLogin from './pages/InternalLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import Particles from './components/Particles';
 import VideoBackground from './components/VideoBackground';
+import WaveCursor from './components/WaveCursor';
 
 function App() {
     return (
         <BrowserRouter>
             <VideoBackground />
             <Particles />
+            <WaveCursor />
             <div className="relative z-10 min-h-screen">
                 <AnimatePresence mode="wait">
                     <Routes>
