@@ -316,13 +316,12 @@ export default function FormPage() {
                         >
                             ←
                         </button>
-                        <div className="flex-1 flex items-center gap-3">
-                            <span className="text-3xl">{config.icon}</span>
+                        <div className="flex items-center gap-3">
                             <div>
-                                <h1 className="text-2xl font-bold" style={{ color: config.color }}>
+                                <h1 className="text-2xl font-semibold" style={{ color: 'rgba(255,255,255,0.85)', fontFamily: 'Manrope, Inter, sans-serif' }}>
                                     {config.title}
                                 </h1>
-                                <p className="text-xs text-gray-500 uppercase tracking-wider">Indotech Transformers Ltd</p>
+                                <p className="text-xs text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>Indotech Transformers Ltd</p>
                             </div>
                         </div>
                     </div>
@@ -372,7 +371,7 @@ export default function FormPage() {
                                         Saving...
                                     </>
                                 ) : (
-                                    <>💾 Save Data</>
+                                    <>Save Data</>
                                 )}
                             </button>
                         </div>

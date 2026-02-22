@@ -17,6 +17,9 @@ body,
   background: #050505;
   color: #e0e0e0;
   font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* ===== Scrollbar ===== */
@@ -25,16 +28,16 @@ body,
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 /* ================================================================
@@ -46,18 +49,18 @@ body,
   left: 0;
   right: 0;
   z-index: 50;
-  padding: 12px 24px;
+  padding: 14px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(5, 5, 5, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .header-logo {
-  height: 40px;
+  height: 38px;
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -67,30 +70,30 @@ body,
 }
 
 .header-brand {
-  font-family: 'Sora', 'Inter', sans-serif;
+  font-family: 'Manrope', 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .header-admin-btn {
   padding: 8px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.45);
   font-size: 13px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   cursor: pointer;
   background: transparent;
   transition: all 0.3s ease;
 }
 
 .header-admin-btn:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 /* ================================================================
@@ -100,7 +103,7 @@ body,
   min-height: 100vh;
 }
 
-/* Hero section */
+/* Hero */
 .hero-section {
   min-height: 100vh;
   display: flex;
@@ -116,195 +119,311 @@ body,
 }
 
 .hero-title {
-  font-family: 'Sora', sans-serif;
-  font-size: clamp(3rem, 10vw, 6rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-subtitle {
-  font-family: 'Sora', sans-serif;
-  font-size: clamp(0.9rem, 2vw, 1.3rem);
-  font-weight: 300;
-  letter-spacing: 0.35em;
-  color: rgba(255, 255, 255, 0.4);
-  margin-top: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(0.85rem, 2vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 10px;
 }
 
 .hero-divider {
-  width: 60px;
+  width: 50px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.12);
-  margin: 24px auto;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 28px auto;
 }
 
 .hero-tagline {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
-  letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.25);
   text-transform: uppercase;
 }
 
-/* Department grid */
+/* Department Grid */
 .dept-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  max-width: 640px;
+  gap: 14px;
+  max-width: 600px;
   width: 100%;
 }
 
 @media (max-width: 600px) {
   .dept-grid {
     grid-template-columns: 1fr;
-    max-width: 400px;
+    max-width: 380px;
   }
 }
 
 .dept-card {
   position: relative;
-  padding: 32px 28px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
+  padding: 28px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.35s ease;
-  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .dept-card:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .dept-card-title {
-  font-family: 'Sora', sans-serif;
-  font-size: 1.3rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .dept-card-desc {
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 300;
+  font-size: 0.78rem;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.35);
   line-height: 1.5;
 }
 
 .dept-card-arrow {
   position: absolute;
-  top: 28px;
-  right: 24px;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.15);
+  top: 24px;
+  right: 20px;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
 
 .dept-card:hover .dept-card-arrow {
-  color: rgba(255, 255, 255, 0.5);
-  transform: translateX(4px);
+  color: rgba(255, 255, 255, 0.4);
+  transform: translateX(3px);
 }
 
-/* Scroll sections */
-.scroll-section {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ================================================================
+   CORPORATE SECTIONS
+   ================================================================ */
+.corp-section {
   padding: 80px 24px;
+  display: flex;
+  justify-content: center;
 }
 
-.scroll-content {
-  max-width: 520px;
-  text-align: center;
+.corp-content {
+  max-width: 720px;
+  width: 100%;
 }
 
-.scroll-heading {
-  font-family: 'Sora', sans-serif;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+.corp-heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 20px;
+}
+
+.corp-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: 16px;
 }
 
-.scroll-body {
-  font-family: 'Inter', sans-serif;
+/* Product grid */
+.corp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+  .corp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.corp-card {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.corp-card-title {
+  font-family: 'Manrope', sans-serif;
   font-size: 0.95rem;
-  font-weight: 300;
-  line-height: 1.8;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.corp-card-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.4);
+}
+
+/* Stats */
+.corp-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.corp-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.corp-stat-value {
+  font-family: 'Manrope', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.corp-stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 2px;
+}
+
+/* Client tags */
+.corp-clients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.corp-client-tag {
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* Disclaimer */
+.corp-disclaimer {
+  padding: 32px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.corp-disclaimer p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-style: italic;
 }
 
 /* Footer */
 .site-footer {
-  padding: 40px 24px;
+  padding: 32px 24px 20px;
   text-align: center;
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.2);
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-credit {
+  margin-top: 6px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.12);
 }
 
 /* ================================================================
    GLASSMORPHISM CARD
    ================================================================ */
 .glass-card {
-  background: rgba(10, 10, 12, 0.7);
+  background: rgba(10, 10, 12, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* ================================================================
    FORMS & INPUTS
    ================================================================ */
 .neon-input {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 8px;
   padding: 12px 16px;
   color: rgba(255, 255, 255, 0.85);
   font-size: 14px;
   font-family: 'Inter', sans-serif;
-  transition: all 0.3s ease;
+  font-weight: 400;
+  transition: all 0.25s ease;
   width: 100%;
   outline: none;
 }
 
 .neon-input:focus {
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.03);
 }
 
 .neon-input::placeholder {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.18);
 }
 
 .neon-btn {
   padding: 12px 28px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .neon-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -324,7 +443,7 @@ body,
   stroke-dasharray: 166;
   stroke-dashoffset: 166;
   stroke-width: 2;
-  stroke: rgba(255, 255, 255, 0.5);
+  stroke: rgba(255, 255, 255, 0.4);
   fill: none;
   animation: checkmark-stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
@@ -334,7 +453,7 @@ body,
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
   stroke-width: 2;
-  stroke: rgba(255, 255, 255, 0.7);
+  stroke: rgba(255, 255, 255, 0.65);
   fill: none;
   animation: checkmark-stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
 }
@@ -349,8 +468,8 @@ body,
    TABS & DATA TABLE (Admin)
    ================================================================ */
 .tab-active {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.18);
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -361,16 +480,16 @@ body,
 }
 
 .data-table th {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.025);
   color: rgba(255, 255, 255, 0.5);
-  font-family: 'Sora', sans-serif;
-  font-weight: 500;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
   padding: 12px 16px;
   text-align: left;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -378,12 +497,12 @@ body,
 
 .data-table td {
   padding: 10px 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.025);
   font-size: 13px;
   font-family: 'Inter', sans-serif;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .data-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.015);
 }

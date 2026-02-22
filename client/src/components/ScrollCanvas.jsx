@@ -63,7 +63,7 @@ export default function ScrollCanvas() {
         const dx = (bufferW - dw) / 2;
         const dy = (bufferH - dh) / 2;
 
-        ctx.globalAlpha = 0.3; // Subtle background
+        ctx.globalAlpha = 0.45; // Visible enough for poor eyesight
         ctx.drawImage(img, dx, dy, dw, dh);
         ctx.globalAlpha = 1.0;
     }, []);
@@ -137,7 +137,7 @@ export default function ScrollCanvas() {
                     height: '100vh',
                     zIndex: 1,
                     pointerEvents: 'none',
-                    background: 'linear-gradient(180deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.45) 50%, rgba(5,5,5,0.6) 100%)',
+                    background: 'linear-gradient(180deg, rgba(5,5,5,0.35) 0%, rgba(5,5,5,0.25) 50%, rgba(5,5,5,0.4) 100%)',
                 }}
             />
         </>

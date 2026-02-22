@@ -211,6 +211,12 @@ export default function AdminDashboard() {
 
                 <div className="flex items-center gap-3 flex-shrink-0">
                     <button
+                        onClick={() => navigate('/')}
+                        className="px-4 py-2 rounded-lg border border-gray-700/50 text-gray-400 hover:text-white hover:border-gray-500 transition-all text-sm"
+                    >
+                        Home
+                    </button>
+                    <button
                         onClick={handleExport}
                         disabled={exporting}
                         className="neon-btn flex items-center gap-2 text-sm py-2 px-4"

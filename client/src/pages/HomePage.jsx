@@ -7,57 +7,53 @@ const departments = [
         id: 'inspector',
         title: 'Inspector',
         desc: 'Inspector Details and Information',
-        gradient: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
-        accent: 'rgba(200,200,200,0.3)',
     },
     {
         id: 'customer',
         title: 'Customer',
         desc: 'Customer Details and Information',
-        gradient: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
-        accent: 'rgba(200,200,200,0.3)',
     },
     {
         id: 'marketing',
         title: 'Marketing',
         desc: 'Marketing Department — Orders and Enquiries',
-        gradient: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
-        accent: 'rgba(200,200,200,0.3)',
     },
     {
         id: 'design',
         title: 'Design',
         desc: 'Design Department — Technical Parameters',
-        gradient: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
-        accent: 'rgba(200,200,200,0.3)',
     },
 ];
+
+const fadeIn = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-80px' },
+    transition: { duration: 0.7, ease: 'easeOut' },
+};
 
 export default function HomePage() {
     const navigate = useNavigate();
 
     return (
         <div className="homepage-root">
-            {/* ─── Glass Header Bar ─── */}
+            {/* ─── Header ─── */}
             <header className="glass-header">
                 <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
                     <img src="/logo.svg" alt="Indo Tech" className="header-logo" />
                     <span className="header-brand">Transformers Ltd</span>
                 </div>
-                <button
-                    onClick={() => navigate('/internal')}
-                    className="header-admin-btn"
-                >
+                <button onClick={() => navigate('/internal')} className="header-admin-btn">
                     Admin Access
                 </button>
             </header>
 
-            {/* ─── Hero Section ─── */}
+            {/* ─── Hero ─── */}
             <section className="hero-section">
                 <motion.div
-                    initial={{ y: -30, opacity: 0 }}
+                    initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    transition={{ duration: 0.9, ease: 'easeOut' }}
                     className="hero-text"
                 >
                     <h1 className="hero-title">INDOTECH</h1>
@@ -79,61 +75,119 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ─── Scroll sections for assembly animation ─── */}
-            <section className="scroll-section">
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-100px' }}
-                    transition={{ duration: 0.8 }}
-                    className="scroll-content"
-                >
-                    <h3 className="scroll-heading">Precision Engineering</h3>
-                    <p className="scroll-body">
-                        Every transformer begins with a meticulously designed magnetic core,
-                        precision-wound copper conductors, and laminated steel assemblies
-                        engineered for optimal flux performance.
+            {/* ─── Section: Powering India's Grid ─── */}
+            <section className="corp-section">
+                <motion.div {...fadeIn} className="corp-content">
+                    <h3 className="corp-heading">Powering India's Grid Modernization</h3>
+                    <p className="corp-body">
+                        Indo Tech Transformers Ltd, with decades of engineering experience, stands as one of
+                        India's most reliable manufacturers of power and distribution transformers — critical
+                        components that enable electricity to flow safely, efficiently, and continuously across
+                        the country.
+                    </p>
+                    <p className="corp-body">
+                        Its ability to engineer products for varied applications — utilities, industrial plants,
+                        steel mills, cement factories, renewable parks, and transmission systems — positions the
+                        company as a system-level partner rather than a single-product manufacturer.
                     </p>
                 </motion.div>
             </section>
 
-            <section className="scroll-section">
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-100px' }}
-                    transition={{ duration: 0.8 }}
-                    className="scroll-content"
-                >
-                    <h3 className="scroll-heading">Thermal Management</h3>
-                    <p className="scroll-body">
-                        Advanced radiator systems and oil channels ensure long-duration
-                        load stability, maintaining operational integrity across
-                        demanding industrial environments.
+            {/* ─── Section: Product Portfolio ─── */}
+            <section className="corp-section">
+                <motion.div {...fadeIn} className="corp-content">
+                    <h3 className="corp-heading">Product Portfolio</h3>
+                    <div className="corp-grid">
+                        <div className="corp-card">
+                            <h4 className="corp-card-title">Distribution Transformers</h4>
+                            <p className="corp-card-body">100 KVA / 11KV to 5,000 KVA / 33KV — serving residential, commercial, and industrial setups with consistent delivery to utilities and DISCOMs.</p>
+                        </div>
+                        <div className="corp-card">
+                            <h4 className="corp-card-title">Power Transformers</h4>
+                            <p className="corp-card-body">5 MVA / 33KV to 31.5 MVA / 132KV — mid-capacity transformers for large industrial users and EPC contractors in 2-winding, 3-winding, and auto configurations.</p>
+                        </div>
+                        <div className="corp-card">
+                            <h4 className="corp-card-title">Large Power Transformers</h4>
+                            <p className="corp-card-body">Up to 200 MVA / 230KV — engineered for substations, renewable generation integration, and transmission strengthening projects.</p>
+                        </div>
+                        <div className="corp-card">
+                            <h4 className="corp-card-title">Special Application</h4>
+                            <p className="corp-card-body">Inverter-duty, converter-duty, and rectifier transformers tailored for wind, hydro, and solar applications supporting green energy expansion.</p>
+                        </div>
+                    </div>
+                </motion.div>
+            </section>
+
+            {/* ─── Section: Manufacturing Excellence ─── */}
+            <section className="corp-section">
+                <motion.div {...fadeIn} className="corp-content">
+                    <h3 className="corp-heading">Manufacturing Excellence</h3>
+                    <p className="corp-body">
+                        The company's manufacturing facility in Kancheepuram, Tamil Nadu is a vertically
+                        integrated ecosystem featuring NABL-accredited testing laboratories, high-voltage
+                        test bays, and quality systems aligned with global standards.
+                    </p>
+                    <div className="corp-stats">
+                        <div className="corp-stat">
+                            <span className="corp-stat-value">9,684</span>
+                            <span className="corp-stat-label">MVA Installed Capacity</span>
+                        </div>
+                        <div className="corp-stat">
+                            <span className="corp-stat-value">16,000</span>
+                            <span className="corp-stat-label">MVA Planned Capacity</span>
+                        </div>
+                        <div className="corp-stat">
+                            <span className="corp-stat-value">88%</span>
+                            <span className="corp-stat-label">Capacity Utilisation (FY25)</span>
+                        </div>
+                    </div>
+                </motion.div>
+            </section>
+
+            {/* ─── Section: Renewable Energy Integration ─── */}
+            <section className="corp-section">
+                <motion.div {...fadeIn} className="corp-content">
+                    <h3 className="corp-heading">Renewable Energy Integration</h3>
+                    <p className="corp-body">
+                        India's mission to achieve 500 gigawatts of renewable energy capacity is creating
+                        one of the largest transformer demand cycles in the country's history. Every gigawatt
+                        of renewable power requires evacuation transformers, pooling substations, inverter-duty
+                        transformers, and high-MVA step-up units.
+                    </p>
+                    <p className="corp-body">
+                        With its facility located close to the southern renewable corridors and major industrial
+                        hubs, Indo Tech benefits from proximity to wind-turbine OEMs, access to leading EPC
+                        contractors, and faster commissioning response times.
                     </p>
                 </motion.div>
             </section>
 
-            <section className="scroll-section">
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-100px' }}
-                    transition={{ duration: 0.8 }}
-                    className="scroll-content"
-                >
-                    <h3 className="scroll-heading">Sealed. Operational.</h3>
-                    <p className="scroll-body">
-                        A unified power system engineered to deliver decades of
-                        reliable, uninterrupted service across critical infrastructure
-                        and industrial installations worldwide.
+            {/* ─── Section: Industry Alignment ─── */}
+            <section className="corp-section">
+                <motion.div {...fadeIn} className="corp-content">
+                    <h3 className="corp-heading">Industry Alignment</h3>
+                    <p className="corp-body">
+                        Indo Tech serves India's largest power utilities, EPC contractors, and industrial
+                        houses — including organizations that operate in high-reliability environments where
+                        transformer performance and long-term engineering quality are non-negotiable.
                     </p>
+                    <div className="corp-clients">
+                        {['NTPC', 'TNEB', 'NLC', 'DVC', 'Adani', 'Tata Projects', 'L&T', 'ABB', 'Siemens', 'JSW', 'Vestas', 'Suzlon'].map(name => (
+                            <span key={name} className="corp-client-tag">{name}</span>
+                        ))}
+                    </div>
                 </motion.div>
+            </section>
+
+            {/* ─── Disclaimer ─── */}
+            <section className="corp-disclaimer">
+                <p>Information provided is for general corporate communication purposes. For statutory disclosures, please refer to official regulatory filings.</p>
             </section>
 
             {/* ─── Footer ─── */}
             <footer className="site-footer">
                 <p>&copy; {new Date().getFullYear()} Indotech Transformers Ltd. All rights reserved.</p>
+                <p className="footer-credit">Website is made by krishnaraju (Intern)</p>
             </footer>
         </div>
     );
@@ -148,27 +202,20 @@ function DepartmentCard({ dept, index, onClick }) {
         const rect = cardRef.current.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        setTilt({ x: y * -8, y: x * 8 });
-    }
-
-    function handleMouseLeave() {
-        setTilt({ x: 0, y: 0 });
+        setTilt({ x: y * -6, y: x * 6 });
     }
 
     return (
         <motion.div
             ref={cardRef}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 + index * 0.12, duration: 0.6, ease: 'easeOut' }}
+            transition={{ delay: 0.3 + index * 0.1, duration: 0.5, ease: 'easeOut' }}
             onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+            onMouseLeave={() => setTilt({ x: 0, y: 0 })}
             onClick={onClick}
             className="dept-card"
-            style={{
-                background: dept.gradient,
-                transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-            }}
+            style={{ transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
         >
             <h3 className="dept-card-title">{dept.title}</h3>
             <p className="dept-card-desc">{dept.desc}</p>
