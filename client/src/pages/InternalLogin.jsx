@@ -170,7 +170,7 @@ export default function InternalLogin() {
             >
                 {/* Header */}
                 <div className="text-center mb-6">
-                    <div className="text-4xl mb-2">🔒</div>
+                    <div className="text-4xl mb-2" style={{ color: 'rgba(255,255,255,0.2)' }}>&#x2588;</div>
                     <h1 className="text-2xl font-bold" style={{ color: '#00d4ff' }}>{titles[mode]}</h1>
                     <p className="text-xs text-gray-500 tracking-wider uppercase mt-1">Indotech Transformers — Internal Portal</p>
                 </div>
