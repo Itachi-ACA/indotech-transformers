@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback } from 'react';
 
-const FRAME_COUNT = 224;
+const FRAME_COUNT = 240;
 
 export default function ScrollCanvas() {
     const canvasRef = useRef(null);
