@@ -63,9 +63,8 @@ export default function ScrollCanvas() {
         const dx = (bufferW - dw) / 2;
         const dy = (bufferH - dh) / 2;
 
-        ctx.globalAlpha = 0.45; // Visible enough for poor eyesight
+        // Draw at full quality — opacity handled by CSS for crisp HD rendering
         ctx.drawImage(img, dx, dy, dw, dh);
-        ctx.globalAlpha = 1.0;
     }, []);
 
     // Scroll listener — maps scroll position to frame index
@@ -125,6 +124,7 @@ export default function ScrollCanvas() {
                     zIndex: 0,
                     pointerEvents: 'none',
                     background: '#050505',
+                    opacity: 0.55,
                 }}
             />
             {/* Dark overlay for text readability */}
@@ -137,7 +137,7 @@ export default function ScrollCanvas() {
                     height: '100vh',
                     zIndex: 1,
                     pointerEvents: 'none',
-                    background: 'linear-gradient(180deg, rgba(5,5,5,0.35) 0%, rgba(5,5,5,0.25) 50%, rgba(5,5,5,0.4) 100%)',
+                    background: 'linear-gradient(180deg, rgba(5,5,5,0.25) 0%, rgba(5,5,5,0.1) 50%, rgba(5,5,5,0.3) 100%)',
                 }}
             />
         </>

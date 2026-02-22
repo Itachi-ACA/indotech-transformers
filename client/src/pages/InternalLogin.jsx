@@ -87,7 +87,7 @@ export default function InternalLogin() {
                             <input className="neon-input" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter username" required />
                         </div>
                         <button type="submit" disabled={loading} className="neon-btn w-full mt-4">
-                            {loading ? 'Sending OTP...' : '📧 Send OTP'}
+                            {loading ? 'Sending OTP...' : 'Send OTP'}
                         </button>
                         <button type="button" onClick={() => { setMode('login'); setError(''); setSuccess(''); }} className="w-full text-center text-sm text-gray-500 hover:text-gray-300 mt-2">
                             ← Back to Login
@@ -104,7 +104,7 @@ export default function InternalLogin() {
                             <input className="neon-input text-center text-2xl tracking-[0.5em]" value={otp} onChange={e => setOtp(e.target.value)} placeholder="000000" maxLength={6} required style={{ letterSpacing: '0.5em' }} />
                         </div>
                         <button type="submit" disabled={loading} className="neon-btn w-full mt-4">
-                            {loading ? 'Verifying...' : '✓ Verify OTP'}
+                            {loading ? 'Verifying...' : 'Verify OTP'}
                         </button>
                         <button type="button" onClick={() => { setMode('request-otp'); setError(''); }} className="w-full text-center text-sm text-gray-500 hover:text-gray-300 mt-2">
                             ← Resend OTP
@@ -138,7 +138,7 @@ export default function InternalLogin() {
                             <input type="password" className="neon-input" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter password" required />
                         </div>
                         <button type="submit" disabled={loading} className="neon-btn w-full mt-4">
-                            {loading ? 'Logging in...' : '🔐 Login'}
+                            {loading ? 'Logging in...' : 'Login'}
                         </button>
                         <button type="button" onClick={() => { setMode('request-otp'); setError(''); setSuccess(''); }} className="w-full text-center text-sm text-gray-500 hover:text-gray-300 mt-2">
                             Forgot Password?
@@ -170,12 +170,11 @@ export default function InternalLogin() {
             >
                 {/* Header */}
                 <div className="text-center mb-6">
-                    <div className="text-4xl mb-2" style={{ color: 'rgba(255,255,255,0.2)' }}>&#x2588;</div>
-                    <h1 className="text-2xl font-bold" style={{ color: '#00d4ff' }}>{titles[mode]}</h1>
-                    <p className="text-xs text-gray-500 tracking-wider uppercase mt-1">Indotech Transformers — Internal Portal</p>
+                    <h1 className="text-2xl font-semibold" style={{ color: 'rgba(255,255,255,0.85)', fontFamily: 'Manrope, Inter, sans-serif' }}>{titles[mode]}</h1>
+                    <p className="text-xs text-gray-500 tracking-wider uppercase mt-1" style={{ fontFamily: 'Inter, sans-serif' }}>Indotech Transformers — Internal Portal</p>
                 </div>
 
-                <div className="h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent mb-6" />
+                <div className="h-px mb-6" style={{ background: 'rgba(255,255,255,0.06)' }} />
 
                 {/* Messages */}
                 <AnimatePresence mode="wait">
