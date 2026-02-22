@@ -4,10 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 
 const TABS = [
-    { id: 'inspectors', label: 'Inspector Data', icon: '🔍', color: '#00d4ff' },
-    { id: 'customers', label: 'Customer Data', icon: '🏢', color: '#7b2ff7' },
-    { id: 'marketing', label: 'Marketing Data', icon: '📊', color: '#10b981' },
-    { id: 'design', label: 'Design Data', icon: '⚙️', color: '#f97316' },
+    { id: 'inspectors', label: 'Inspector Data', color: '#64748b' },
+    { id: 'customers', label: 'Customer Data', color: '#64748b' },
+    { id: 'marketing', label: 'Marketing Data', color: '#64748b' },
+    { id: 'design', label: 'Design Data', color: '#64748b' },
 ];
 
 const COLUMN_LABELS = {
@@ -183,16 +183,15 @@ export default function AdminDashboard() {
             {/* Top Bar */}
             <div className="glass-card p-4 mb-4 flex flex-col md:flex-row items-start md:items-center gap-4">
                 <div className="flex items-center gap-3 flex-shrink-0">
-                    <span className="text-2xl">⚡</span>
                     <div>
-                        <h1 className="text-lg font-bold" style={{ color: '#00d4ff' }}>INDOTECH</h1>
+                        <h1 className="text-lg font-bold" style={{ color: 'rgba(255,255,255,0.85)' }}>INDOTECH</h1>
                         <p className="text-[10px] text-gray-500 uppercase tracking-widest">Admin Dashboard</p>
                     </div>
                 </div>
 
                 {/* Global Search */}
                 <div className="flex-1 w-full md:max-w-lg relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">🔍</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">Search</span>
                     <input
                         type="text"
                         className="neon-input pl-10"
@@ -216,7 +215,7 @@ export default function AdminDashboard() {
                         disabled={exporting}
                         className="neon-btn flex items-center gap-2 text-sm py-2 px-4"
                     >
-                        {exporting ? '⏳ Exporting...' : '📥 Export Excel'}
+                        {exporting ? 'Exporting...' : 'Export Excel'}
                     </button>
                     <button
                         onClick={handleLogout}
@@ -239,8 +238,7 @@ export default function AdminDashboard() {
                             }`}
                         style={activeTab === tab.id ? { borderColor: tab.color, color: tab.color, boxShadow: `0 0 15px ${tab.color}33` } : {}}
                     >
-                        <span>{tab.icon}</span>
-                        {tab.label}
+                        <span>{tab.label}</span>
                         {activeTab === tab.id && data.length > 0 && (
                             <span className="ml-1 px-2 py-0.5 rounded-full text-xs" style={{ background: tab.color + '22' }}>
                                 {data.length}
@@ -264,7 +262,7 @@ export default function AdminDashboard() {
                         </div>
                     ) : data.length === 0 ? (
                         <div className="flex flex-col items-center justify-center py-16">
-                            <div className="text-4xl mb-3 opacity-30">📋</div>
+                            <div className="text-4xl mb-3 opacity-30">—</div>
                             <p className="text-gray-500">No records found</p>
                             {search && <p className="text-gray-600 text-sm mt-1">Try adjusting your search query</p>}
                         </div>

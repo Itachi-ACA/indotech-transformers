@@ -121,7 +121,7 @@ export default function InternalLogin() {
                             <input type="password" className="neon-input" value={newPassword} onChange={e => setNewPassword(e.target.value)} placeholder="Enter new password" minLength={6} required />
                         </div>
                         <button type="submit" disabled={loading} className="neon-btn w-full mt-4">
-                            {loading ? 'Resetting...' : '🔑 Reset Password'}
+                            {loading ? 'Resetting...' : 'Reset Password'}
                         </button>
                     </form>
                 );

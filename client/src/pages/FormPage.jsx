@@ -7,8 +7,7 @@ import SuccessOverlay from '../components/SuccessOverlay';
 const FORM_CONFIGS = {
     customer: {
         title: 'Customer Details',
-        icon: '🏢',
-        color: '#7b2ff7',
+        color: '#94a3b8',
         sections: [
             {
                 fields: [
@@ -22,8 +21,7 @@ const FORM_CONFIGS = {
     },
     inspector: {
         title: 'Inspector Details',
-        icon: '🔍',
-        color: '#00d4ff',
+        color: '#94a3b8',
         sections: [
             {
                 fields: [
@@ -39,8 +37,7 @@ const FORM_CONFIGS = {
     },
     marketing: {
         title: 'Marketing Dept',
-        icon: '📊',
-        color: '#10b981',
+        color: '#94a3b8',
         requiresWO: true,
         sections: [
             {
@@ -64,8 +61,7 @@ const FORM_CONFIGS = {
     },
     design: {
         title: 'Design Dept',
-        icon: '⚙️',
-        color: '#f97316',
+        color: '#94a3b8',
         requiresWO: true,
         sections: [
             {

@@ -7,7 +7,7 @@ export default function SuccessOverlay({ countdown, message }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center"
-            style={{ background: 'rgba(10, 10, 15, 0.95)' }}
+            style={{ background: 'rgba(5, 5, 5, 0.95)' }}
         >
             <motion.div
                 initial={{ scale: 0.5, opacity: 0 }}
@@ -16,7 +16,7 @@ export default function SuccessOverlay({ countdown, message }) {
                 className="text-center"
             >
                 {/* Animated Checkmark */}
-                <div className="mx-auto mb-6" style={{ width: 100, height: 100 }}>
+                <div className="mx-auto mb-6" style={{ width: 80, height: 80 }}>
                     <svg viewBox="0 0 52 52" className="w-full h-full">
                         <circle
                             className="checkmark-circle"
@@ -34,19 +34,20 @@ export default function SuccessOverlay({ countdown, message }) {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.5 }}
-                    className="text-3xl font-bold mb-3"
-                    style={{ color: '#00d4ff' }}
+                    className="text-2xl font-semibold mb-3"
+                    style={{ color: 'rgba(255,255,255,0.85)', fontFamily: 'Sora, Inter, sans-serif' }}
                 >
-                    {message || 'Data Saved Successfully!'}
+                    {message || 'Data Saved Successfully'}
                 </motion.h2>
 
                 <motion.p
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.7 }}
-                    className="text-gray-400 mb-6"
+                    className="text-gray-500 mb-6"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
                 >
-                    Redirecting to homepage in {countdown} seconds...
+                    Redirecting to homepage in {countdown} seconds
                 </motion.p>
 
                 {/* Countdown ring */}
@@ -55,26 +56,26 @@ export default function SuccessOverlay({ countdown, message }) {
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.9 }}
                     className="mx-auto"
-                    style={{ width: 60, height: 60 }}
+                    style={{ width: 50, height: 50 }}
                 >
                     <svg viewBox="0 0 60 60" className="w-full h-full">
                         <circle
                             cx="30" cy="30" r="26"
                             fill="none"
-                            stroke="rgba(0, 212, 255, 0.2)"
-                            strokeWidth="3"
+                            stroke="rgba(255, 255, 255, 0.08)"
+                            strokeWidth="2"
                         />
                         <circle
                             cx="30" cy="30" r="26"
                             fill="none"
-                            stroke="#00d4ff"
-                            strokeWidth="3"
+                            stroke="rgba(255, 255, 255, 0.45)"
+                            strokeWidth="2"
                             strokeDasharray={`${(countdown / 5) * 163.36} 163.36`}
                             strokeLinecap="round"
                             transform="rotate(-90 30 30)"
                             style={{ transition: 'stroke-dasharray 1s linear' }}
                         />
-                        <text x="30" y="35" textAnchor="middle" fill="#00d4ff" fontSize="18" fontWeight="bold">
+                        <text x="30" y="35" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="16" fontWeight="500">
                             {countdown}
                         </text>
                     </svg>
