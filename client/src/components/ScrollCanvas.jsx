@@ -4,37 +4,32 @@ const FRAME_COUNT = 240;
 
 export default function ScrollCanvas() {
     const canvasRef = useRef(null);
-    const imagesRef = useRef([]);
-    const currentFrameRef = useRef(-1);
-    const rafIdRef = useRef(null);
-    const loadedRef = useRef(false);
-
-    // Preload all frames
-    useEffect(() => {
-        let loaded = 0;
-        const images = new Array(FRAME_COUNT);
-
-        for (let i = 0; i < FRAME_COUNT; i++) {
-            const img = new Image();
-            img.src = `/sequence/frame_${i}.jpg`;
-            img.onload = img.onerror = () => {
-                loaded++;
-                if (loaded === FRAME_COUNT) {
-                    imagesRef.current = images;
-                    loadedRef.current = true;
-                    drawFrame(0);
-                }
-            };
-            images[i] = img;
-        }
-    }, []);
+    const imagesRef = useRef(new Array(FRAME_COUNT).fill(null));
+    const currentFrameRef = useRef(0);
+    const loadedCountRef = useRef(0);
+    const firstDrawDone = useRef(false);
 
     // Draw a single frame to canvas
     const drawFrame = useCallback((index) => {
         const canvas = canvasRef.current;
         if (!canvas) return;
-        const img = imagesRef.current[index];
-        if (!img || !img.complete || !img.naturalWidth) return;
+
+        // Find closest loaded frame if this one isn't ready yet
+        let img = imagesRef.current[index];
+        if (!img || !img.complete || !img.naturalWidth) {
+            // Search nearby frames
+            for (let d = 1; d < FRAME_COUNT; d++) {
+                if (index - d >= 0) {
+                    const prev = imagesRef.current[index - d];
+                    if (prev && prev.complete && prev.naturalWidth) { img = prev; break; }
+                }
+                if (index + d < FRAME_COUNT) {
+                    const next = imagesRef.current[index + d];
+                    if (next && next.complete && next.naturalWidth) { img = next; break; }
+                }
+            }
+            if (!img) return;
+        }
 
         const ctx = canvas.getContext('2d');
         const dpr = window.devicePixelRatio || 1;
@@ -49,29 +44,67 @@ export default function ScrollCanvas() {
         }
 
         ctx.clearRect(0, 0, bufferW, bufferH);
-
-        // Fill background
         ctx.fillStyle = '#050505';
         ctx.fillRect(0, 0, bufferW, bufferH);
 
-        // Contain-fit the image
+        // Cover-fit the image (fills canvas, crops edges)
         const iw = img.naturalWidth;
         const ih = img.naturalHeight;
-        const scale = Math.min(bufferW / iw, bufferH / ih);
+        const scale = Math.max(bufferW / iw, bufferH / ih);
         const dw = iw * scale;
         const dh = ih * scale;
         const dx = (bufferW - dw) / 2;
         const dy = (bufferH - dh) / 2;
 
-        // Draw at full quality — opacity handled by CSS for crisp HD rendering
         ctx.drawImage(img, dx, dy, dw, dh);
     }, []);
 
-    // Scroll listener — maps scroll position to frame index
+    // Progressive frame loading — loads frames in priority order
+    useEffect(() => {
+        const images = imagesRef.current;
+
+        // Priority: load frame 0 first, then every 10th, then fill rest
+        const priority = [0];
+        for (let i = 10; i < FRAME_COUNT; i += 10) priority.push(i);
+        for (let i = 0; i < FRAME_COUNT; i++) {
+            if (!priority.includes(i)) priority.push(i);
+        }
+
+        let idx = 0;
+        const BATCH = 6; // Load 6 at a time
+
+        function loadBatch() {
+            const end = Math.min(idx + BATCH, priority.length);
+            for (let b = idx; b < end; b++) {
+                const frameIdx = priority[b];
+                const img = new Image();
+                img.src = `/sequence/frame_${frameIdx}.jpg`;
+                img.onload = () => {
+                    images[frameIdx] = img;
+                    loadedCountRef.current++;
+
+                    // Draw first frame as soon as it loads
+                    if (frameIdx === 0 && !firstDrawDone.current) {
+                        firstDrawDone.current = true;
+                        drawFrame(0);
+                    }
+                };
+                img.onerror = () => {
+                    loadedCountRef.current++;
+                };
+            }
+            idx = end;
+            if (idx < priority.length) {
+                setTimeout(loadBatch, 50); // Stagger batches to avoid network congestion
+            }
+        }
+
+        loadBatch();
+    }, [drawFrame]);
+
+    // Scroll listener
     useEffect(() => {
         function onScroll() {
-            if (!loadedRef.current) return;
-
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
 
@@ -84,10 +117,7 @@ export default function ScrollCanvas() {
             }
 
             const progress = Math.max(0, Math.min(1, scrollTop / docHeight));
-            const frameIndex = Math.min(
-                FRAME_COUNT - 1,
-                Math.floor(progress * (FRAME_COUNT - 1))
-            );
+            const frameIndex = Math.min(FRAME_COUNT - 1, Math.floor(progress * (FRAME_COUNT - 1)));
 
             if (frameIndex !== currentFrameRef.current) {
                 currentFrameRef.current = frameIndex;
@@ -96,9 +126,7 @@ export default function ScrollCanvas() {
         }
 
         function onResize() {
-            if (loadedRef.current && currentFrameRef.current >= 0) {
-                drawFrame(currentFrameRef.current);
-            }
+            drawFrame(currentFrameRef.current);
         }
 
         window.addEventListener('scroll', onScroll, { passive: true });
@@ -127,7 +155,6 @@ export default function ScrollCanvas() {
                     opacity: 0.55,
                 }}
             />
-            {/* Dark overlay for text readability */}
             <div
                 style={{
                     position: 'fixed',
