@@ -79,23 +79,26 @@ router.get('/export', async (req, res) => {
             sheet.addRow([]);
 
             if (rows.length > 0) {
+                // Filter out internal fields if needed, but here we just ignore 'id'
                 const columns = Object.keys(rows[0]).filter(k => k !== 'id');
-                const headerRow = sheet.addRow(columns.map(c => c.replace(/_/g, ' ').toUpperCase()));
-                headerRow.eachCell(cell => {
-                    cell.font = { bold: true, color: { argb: 'FFFFFFFF' } };
-                    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF003366' } };
-                    cell.alignment = { horizontal: 'center' };
-                    cell.border = { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } };
+
+                sheet.addTable({
+                    name: `Table_${table}`,
+                    ref: 'A4',
+                    headerRow: true,
+                    totalsRow: false,
+                    style: {
+                        theme: 'TableStyleMedium2',
+                        showRowStripes: true,
+                    },
+                    columns: columns.map(c => ({
+                        name: c.replace(/_/g, ' ').toUpperCase(),
+                        filterButton: true
+                    })),
+                    rows: rows.map(row => columns.map(c => row[c] ?? ''))
                 });
 
-                for (const row of rows) {
-                    const vals = columns.map(c => row[c] ?? '');
-                    const dataRow = sheet.addRow(vals);
-                    dataRow.eachCell(cell => {
-                        cell.border = { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } };
-                    });
-                }
-
+                // Auto-fit columns
                 columns.forEach((col, i) => {
                     let maxLen = col.length;
                     rows.forEach(row => {
