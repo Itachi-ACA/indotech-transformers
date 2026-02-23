@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { queryAll } from '../db.js';
+import { queryAll, runSql } from '../db.js';
 import { requireAuth } from '../middleware/auth.js';
 import ExcelJS from 'exceljs';
 
@@ -119,6 +119,21 @@ router.get('/export', async (req, res) => {
     } catch (error) {
         console.error('Excel export error:', error);
         return res.status(500).json({ error: 'Failed to export data.' });
+    }
+});
+
+// Delete a single record by table and ID
+router.delete('/data/:table/:id', (req, res) => {
+    try {
+        const { table, id } = req.params;
+        if (!TABLES.includes(table)) {
+            return res.status(400).json({ error: 'Invalid table name.' });
+        }
+        runSql(`DELETE FROM ${table} WHERE id = ?`, [parseInt(id)]);
+        return res.json({ success: true, message: 'Record deleted.' });
+    } catch (error) {
+        console.error('Delete error:', error);
+        return res.status(500).json({ error: 'Failed to delete record.' });
     }
 });
 

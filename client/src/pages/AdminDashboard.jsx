@@ -155,6 +155,16 @@ export default function AdminDashboard() {
         }
     }
 
+    async function handleDelete(table, id) {
+        if (!window.confirm('Are you sure you want to delete this entry?')) return;
+        try {
+            await axios.delete(`/api/admin/data/${table}/${id}`, { withCredentials: true });
+            fetchData();
+        } catch (err) {
+            console.error('Delete failed:', err);
+        }
+    }
+
     async function handleLogout() {
         try {
             await axios.post('/api/auth/logout', {}, { withCredentials: true });
@@ -279,6 +289,7 @@ export default function AdminDashboard() {
                                     {columns.map(col => (
                                         <th key={col}>{COLUMN_LABELS[col] || col.replace(/_/g, ' ')}</th>
                                     ))}
+                                    <th className="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -302,6 +313,14 @@ export default function AdminDashboard() {
                                                     )}
                                                 </td>
                                             ))}
+                                            <td className="text-center">
+                                                <button
+                                                    onClick={() => handleDelete(activeTab, row.id)}
+                                                    className="px-3 py-1 rounded text-xs border border-red-500/30 text-red-400 hover:bg-red-500/15 hover:text-red-300 transition-all"
+                                                >
+                                                    Delete
+                                                </button>
+                                            </td>
                                         </motion.tr>
                                     ))}
                                 </AnimatePresence>
