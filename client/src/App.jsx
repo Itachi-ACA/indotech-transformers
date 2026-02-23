@@ -5,11 +5,13 @@ import FormPage from './pages/FormPage';
 import InternalLogin from './pages/InternalLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import ScrollCanvas from './components/ScrollCanvas';
+import LightningCursor from './components/LightningCursor';
 
 function App() {
     return (
         <BrowserRouter>
             <ScrollCanvas />
+            <LightningCursor />
             <div className="relative z-10 min-h-screen">
                 <AnimatePresence mode="wait">
                     <Routes>
