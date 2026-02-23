@@ -191,10 +191,9 @@ export default function AdminDashboard() {
 
                 {/* Global Search */}
                 <div className="flex-1 w-full md:max-w-lg relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">Search</span>
                     <input
                         type="text"
-                        className="neon-input pl-10"
+                        className="neon-input"
                         placeholder="Search by W.O No, Serial No, Name, Project..."
                         value={search}
                         onChange={e => setSearch(e.target.value)}
