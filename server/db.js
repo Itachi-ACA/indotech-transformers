@@ -153,7 +153,7 @@ export async function initDatabase() {
   // Seed default admin
   const existing = db.exec("SELECT id FROM admin_users WHERE username = 'admin'");
   if (existing.length === 0 || existing[0].values.length === 0) {
-    const hashedPassword = bcrypt.hashSync('indotech@4321', 12);
+    const hashedPassword = bcrypt.hashSync('indo-tech@4321', 12);
     db.run("INSERT INTO admin_users (username, password, email) VALUES (?, ?, ?)", [
       'admin', hashedPassword, 'devaraj.k@indo-tech.com',
     ]);
