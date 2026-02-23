@@ -39,10 +39,10 @@ export default function HomePage() {
         <div className="homepage-root">
             {/* ─── Header ─── */}
             <header className="glass-header">
-                <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
+                <a href="https://www.indo-tech.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3" style={{ textDecoration: 'none' }}>
                     <img src="/logo.svg" alt="Indo Tech" className="header-logo" />
                     <span className="header-brand">Transformers Ltd</span>
-                </div>
+                </a>
                 <button onClick={() => navigate('/internal')} className="header-admin-btn">
                     Admin Access
                 </button>
